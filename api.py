@@ -8,10 +8,10 @@ def home():
     if request.method=="POST":
         try:
             conn = psycopg2.connect(         ##connection to the postgre server
-            host="localhost",
-            database="Tourist",
-            user="postgres",
-            password="820926@Giri")
+            host="kandula.db.elephantsql.com",
+            database="jfhlybsv",
+            user="jfhlybsv",
+            password="giQZwzp0CyO_QtWUsoMmVTgoBzR1Z6UO")
             records=[]
             cur = conn.cursor()
             cur.execute('SELECT * FROM tourist_places;')
@@ -30,10 +30,10 @@ def up_del_ins():
         record = (json_insert["location_id"],json_insert["title"],json_insert["image"],json_insert["visiting_hours"],json_insert["tips"],json_insert["built_by"],json_insert["built_in"],json_insert["destination_url"])
         try:
             conn = psycopg2.connect(         ##connection to the postgre server
-            host="localhost",
-            database="Tourist",
-            user="postgres",
-            password="820926@Giri")
+            host="kandula.db.elephantsql.com",
+            database="jfhlybsv",
+            user="jfhlybsv",
+            password="giQZwzp0CyO_QtWUsoMmVTgoBzR1Z6UO")
             cur = conn.cursor()
             cur.execute("Insert into tourist_places values (%s,%s,%s,%s,%s,%s,%s,%s)",record)
             conn.commit()
@@ -48,10 +48,10 @@ def up_del_ins():
         update_record = (json_update["value1"],json_update["title"])
         try:
             conn = psycopg2.connect(         ##connection to the postgre server
-            host="localhost",
-            database="Tourist",
-            user="postgres",
-            password="820926@Giri")
+            host="kandula.db.elephantsql.com",
+            database="jfhlybsv",
+            user="jfhlybsv",
+            password="giQZwzp0CyO_QtWUsoMmVTgoBzR1Z6UO")
             cur = conn.cursor()
             query = f"update tourist_places set {json_update['field1']}"
             cur.execute(query+"=%s where title=%s",update_record)
@@ -65,10 +65,10 @@ def up_del_ins():
         delete_json = request.json
         try:
             conn = psycopg2.connect(         ##connection to the postgre server
-            host="localhost",
-            database="Tourist",
-            user="postgres",
-            password="820926@Giri")
+            host="kandula.db.elephantsql.com",
+            database="jfhlybsv",
+            user="jfhlybsv",
+            password="giQZwzp0CyO_QtWUsoMmVTgoBzR1Z6UO")
             cur = conn.cursor()
             cur.execute(f"Delete from tourist_places where title='{delete_json['title']}'")
             conn.commit()
@@ -84,10 +84,10 @@ def search():
     title = request.args.get("title")
     try:
         conn = psycopg2.connect(         ##connection to the postgre server
-        host="localhost",
-        database="Tourist",
-        user="postgres",
-        password="820926@Giri")
+        host="kandula.db.elephantsql.com",
+            database="jfhlybsv",
+            user="jfhlybsv",
+            password="giQZwzp0CyO_QtWUsoMmVTgoBzR1Z6UO")
         search_data = []
         cur = conn.cursor()
         cur.execute(f"Select * from tourist_places where title='{title}'")
